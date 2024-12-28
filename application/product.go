@@ -11,7 +11,7 @@ func init() {
 }
 
 type ProductInterface interface {
-	isValid() (bool, error)
+	IsValid() (bool, error)
 	Enable() error
 	Disable() error
 	GetId() string
@@ -33,6 +33,11 @@ type ProductReader interface {
 
 type ProductWriter interface {
 	Save(product ProductInterface) (ProductInterface, error)
+}
+
+type ProductPersistenceInterface interface {
+	ProductReader
+	ProductWriter
 }
 
 const (
